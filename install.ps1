@@ -1,5 +1,5 @@
-# 安装 long-loop。目录由调用者指定，脚本不默认写入任何代理的 skills 目录。
-# 目标目录里缺少的必需技能会装进同一目录。页面才用到的技能不在这里装。
+# 安装 long-loop。安装目录由 -Target 或终端中的选择给出。
+# 所选目录若缺少闭环依赖，一并装入。页面相关技能在对应环节需要时安装。
 #
 #   powershell -File install.ps1
 #   powershell -File install.ps1 -Target C:\你的\skills目录
@@ -52,10 +52,10 @@ function Search-Roots {
 function Choose-Target {
     if ($Target) { return $Target }
     if (-not [Environment]::UserInteractive) {
-        throw "非交互运行需要 -Target 目录"
+        throw "请通过 -Target 指定技能目录"
     }
     $roots = Search-Roots
-    Write-Host "把 long-loop 安装到哪个目录？脚本没有默认目录。"
+    Write-Host "选择 long-loop 的安装目录："
     for ($i = 0; $i -lt $roots.Count; $i++) {
         Write-Host ("  {0}) {1}" -f ($i + 1), $roots[$i])
     }

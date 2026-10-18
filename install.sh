@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# 安装 long-loop。目录由调用者指定，脚本不默认写入任何代理的 skills 目录。
-# 目标目录里缺少的必需技能会装进同一目录。页面才用到的技能不在这里装。
+# 安装 long-loop。安装目录由 --target 或终端中的选择给出。
+# 所选目录若缺少闭环依赖，一并装入。页面相关技能在对应环节需要时安装。
 #
 #   bash install.sh
 #   bash install.sh --target /你的/skills目录
@@ -48,7 +48,7 @@ usage() {
   cat <<'EOF'
 用法：bash install.sh [--target 目录] [--link] [--skip-deps] [--uninstall]
 
-  --target     技能目录。非交互运行时必须给出。不设默认目录。
+  --target     技能目录。脚本化调用时必填。
   --link       用符号链接安装。省略时复制文件。
   --skip-deps  只安装 long-loop，不补必需技能。
   --uninstall  从该目录移除 long-loop。不移除已装上的必需技能。
@@ -85,9 +85,9 @@ resolve() {
 
 choose_target() {
   [[ -n "$TARGET" ]] && return
-  [[ -t 0 ]] || die "非交互运行需要 --target 目录"
+  [[ -t 0 ]] || die "请通过 --target 指定技能目录"
   cat <<EOF
-把 long-loop 安装到哪个目录？脚本没有默认目录。
+选择 long-loop 的安装目录：
 
   1) $HOME/.claude/skills
   2) $HOME/.agents/skills

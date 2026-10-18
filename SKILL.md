@@ -1,16 +1,15 @@
 ---
 name: long-loop
-description: 研发闭环。人唤起后，把一个功能从产品规格做到测试通过的 PR。
-disable-model-invocation: true
+description: 把一个功能从产品规格、界面设计、技术设计、实现推进到测试通过的 PR。当用户用自然语言要求补产品规格、做界面设计、写技术设计、拆开发任务、实现功能、提交 PR，或提到研发闭环、long-loop 时，由 agent 加载并执行。
 ---
 
 # 研发闭环
 
-人唤起本技能后，按下面的顺序做。角色文件在本技能目录的 `roles/` 下。用词以本目录的 `GLOSSARY.md` 为准。
+加载本技能后，按下面的顺序做。角色文件在本技能目录的 `roles/` 下。用词以本目录的 `GLOSSARY.md` 为准。
 
 ## 安装
 
-安装目录由人指定。`install.sh` 和 `install.ps1` 不默认写入任何代理的 skills 目录。
+用 `install.sh` 或 `install.ps1` 把本技能装进调用方给出的技能目录。
 
 ```bash
 bash install.sh --target <技能目录>
@@ -18,9 +17,9 @@ bash install.sh --target <技能目录> --link
 bash install.sh --target <技能目录> --uninstall
 ```
 
-Windows 用 `powershell -File install.ps1 -Target <技能目录>`。省略 `--target` 时，脚本列出常见目录，等人选一个。
+Windows 用 `powershell -File install.ps1 -Target <技能目录>`。在终端中直接运行时，脚本列出常见技能目录并等待选择。
 
-目标目录里缺少的必需技能会装进同一目录：`grill-with-docs`、`grilling`、`domain-modeling`、`to-spec`、`to-tickets`、`implement`、`implement-spec`、`tdd`、`code-review`、`pr`、`ponytail`。页面才用到的技能不在安装时装。
+所选目录若缺少闭环依赖，一并装入：`grill-with-docs`、`grilling`、`domain-modeling`、`to-spec`、`to-tickets`、`implement`、`implement-spec`、`tdd`、`code-review`、`pr`、`ponytail`。页面相关技能在对应环节需要时安装。
 
 ## 1. 读现状
 
