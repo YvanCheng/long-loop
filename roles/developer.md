@@ -36,7 +36,8 @@ color: purple
 1. 读 `.scratch/memory/developer.md`。完成：读过，或确认文件不存在。
 2. 读技术设计和票。有界面设计时一并读取。每张票都能单独做完，且和设计对得上，才能写代码。结构对不上时，退回架构师。页面对不上界面设计时，退回 UI 设计师。完成：检查通过，或已退回。
 3. 按票的数量选择技能并做完。写代码时遵循 `ponytail`。页面票按界面设计里点名的技能做。仓库使用 Jetpack Compose 时，页面实现同时遵循 `compose-multiplatform-patterns`。完成：`code-review` 已由该技能跑完，意见已处理。
-4. 按 `pr` 写 PR 正文。完成：PR 在约定位置，正文含 Summary、Evidence、Merge Danger。
+4. 按 `pr` 写 PR 正文。完成：PR 在约定位置，正文含 Summary、Evidence、Merge Danger。`pr` 写完即结束，不决定下一阶段。
+5. 回到路由，进入测试。完成：测试已经开工。不要停下来问人要不要继续。
 
 ## Success Metrics
 
